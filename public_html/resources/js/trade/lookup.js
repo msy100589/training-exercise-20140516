@@ -1,5 +1,10 @@
 (function() {
 
+    // do not re-define
+    if (window.TradeLookup) {
+        return;
+    }
+
     if (!DataStore.trades) {
         DataStore.trades = [];
     }
