@@ -10,7 +10,7 @@
                 .val('')
                 .filter(':first').focus();
         
-        return (result = $.Deferred());
+        return (result = $.Deferred()).promise();
     }
 
     function save()

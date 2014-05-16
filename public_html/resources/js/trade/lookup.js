@@ -16,7 +16,7 @@
     function show()
     {
         loadPage();
-        return (result = $.Deferred());
+        return (result = $.Deferred()).promise();
     }
 
     function selectItem()

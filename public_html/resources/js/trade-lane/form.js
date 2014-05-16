@@ -8,7 +8,7 @@
         $('.form', $element).removeAttr('hidden');
         $('.form input:text', $element).val('');
         $('.form input:text:first', $element).focus();
-        return (result = $.Deferred());
+        return (result = $.Deferred()).promise();
     }
 
     function save()
