@@ -22,7 +22,7 @@
     function refreshList()
     {
         var $list = $('.items .list', $element);
-        TableUtil.renderItems($list, ['name', 'originTrade', 'destTrade'], items);
+        TableUtil.renderItems($list, ['name', 'originTradeName', 'destTradeName'], items);
     }
 
     function showPage()

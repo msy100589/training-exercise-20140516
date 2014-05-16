@@ -14,6 +14,13 @@
         return (result = $.Deferred());
     }
 
+    function selectItem()
+    {
+        var selected = $('.list tr.info', $element).data('item');
+        $element.modal('hide');
+        result.resolve(selected);
+    }
+
     function loadPage()
     {
         var $elem = $('#trade-lookup');
@@ -24,6 +31,7 @@
                 $('<div></div>')
                         .appendTo('body')
                         .load('pages/trade/lookup.html', function() {
+                            initLookup();
                             bindInputs();
                             deferred.resolve();
                         });
@@ -44,14 +52,20 @@
 
     function bindInputs()
     {
-        $element = $('#trade-lookup');
-        
-        //$element.on('click', '.')
+        $element.on('click', '.btn-select', selectItem);
     }
 
-    $(function() {
+    function initLookup()
+    {
         $element = $('#trade-lookup');
-    });
+        $element.on('click', '.list tr', function() {
+            $(this).siblings('.info').removeClass('info');
+            $(this).addClass('info');
+        });
+    }
+
+    // invoke initLookup onDOMReady
+    $(initLookup);
 
     window.TradeLookup = {
         show: show

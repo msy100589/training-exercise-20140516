@@ -5,7 +5,7 @@ var TableUtil = {
         if (!items) return;
 
         $.each(items, function(idx, item) {
-            var $tr = $('<tr></tr>').appendTo($table);
+            var $tr = $('<tr></tr>').appendTo($table).data('item', item);
             $.each(cols, function(idx, col) {
                 $('<td></td>').text(item[col]).appendTo($tr);
             });

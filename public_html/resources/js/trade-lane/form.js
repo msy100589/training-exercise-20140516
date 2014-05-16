@@ -6,14 +6,17 @@
     function show()
     {
         $('.form', $element).removeAttr('hidden');
-        $('.form input:text:first', $element).val('').focus();
+        $('.form input:text', $element).val('');
+        $('.form input:text:first', $element).focus();
         return (result = $.Deferred());
     }
 
     function save()
     {
         var item = {
-            name: $('.form input[name=name]', $element).val()
+            name: $('.form input[name=name]', $element).val(),
+            originTradeName: $('.form input[name=originTradeName]', $element).val(),
+            destTradeName: $('.form input[name=destTradeName]', $element).val()
         };
 
         $('.form', $element).attr('hidden', 'hidden');
@@ -28,15 +31,20 @@
 
     function lookupOrigin()
     {
-        TradeLookup.show()
-                .done(function(trade) {
-
-                });
+        TradeLookup.show().done(function(trade) {
+            if (trade) {
+                $('.form input[name=originTradeName]', $element).val(trade.name);
+            }
+        });
     }
 
     function lookupDest()
     {
-        
+        TradeLookup.show().done(function(trade) {
+            if (trade) {
+                $('.form input[name=destTradeName]', $element).val(trade.name);
+            }
+        });
     }
 
     function bindInputs()
